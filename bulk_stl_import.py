@@ -21,7 +21,13 @@ def import_stl_files(root, parent_collection):
         file_path = os.path.join(root, file)
         if file.endswith(".stl"):
             # Import the STL file
-            bpy.ops.import_mesh.stl(filepath=file_path)
+            # Support both Blender 5+ (wm.stl_import) and older versions (import_mesh.stl)
+            if hasattr(bpy.ops.wm, 'stl_import'):
+                # Blender 5+ uses the new API
+                bpy.ops.wm.stl_import(filepath=file_path)
+            else:
+                # Older Blender versions use the legacy API
+                bpy.ops.import_mesh.stl(filepath=file_path)
             # Move the imported object to the parent collection
             obj = bpy.context.selected_objects[0]
             parent_collection.objects.link(obj)
