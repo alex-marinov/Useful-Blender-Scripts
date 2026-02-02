@@ -2,9 +2,9 @@ import bpy
 
 bl_info = {
     "name": "Collection Switcher for 3D View",
-    "author": "Your Name",
-    "version": (1, 0),
-    "blender": (5, 0, 0),
+    "author": "Alex Marinov (alex@konsept.design)",
+    "version": (0, 0, 1),
+    "blender": (5, 0, 1),
     "description": "Switch between collections using number keys 1-9 in 3D Viewport",
     "category": "3D View",
 }
